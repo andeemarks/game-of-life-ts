@@ -1,0 +1,43 @@
+{
+  "name": "game-of-life",
+  "version": "1.0.0",
+  "description": "Typescript version of Comway's Game of Life simulation.",
+  "author": "Andy Marks",
+  "private": false,
+  "main": "./lib/src/game-of-life.js",
+  "license": "MIT",
+  "bin": {
+    "2048-ts": "./lib/src/game-of-life.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andeemarks/game-of-life-ts"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.0",
+    "@types/node": "^12.7.12",
+    "@typescript-eslint/eslint-plugin": "^2.3.3",
+    "@typescript-eslint/parser": "^2.3.3",
+    "eslint": "^6.5.1",
+    "eslint-plugin-import": "^2.18.2",
+    "jest": "^26.0.0",
+    "ts-jest": "^26.0.0",
+    "typescript": "^3.6.4",
+    "ts-node": "^9.1.1"
+  },
+  "scripts": {
+    "test": "yarn lint:types && jest --no-cache",
+    "lint": "yarn lint:types && yarn lint:ci",
+    "lint:types": "yarn tsc --noEmit -p .",
+    "lint:ci": "eslint . --ext .tsx,.ts",
+    "create": "yarn build",
+    "game": "yarn build && node lib/src/game-of-life.js",
+    "build": "tsc -p ."
+  },
+  "dependencies": {
+    "boxen": "^5.0.0",
+    "chalk": "^4.1.0",
+    "clear": "^0.1.0",
+    "figlet": "^1.5.0"
+  }
+}
