@@ -1,17 +1,7 @@
 #!/usr/bin/env node
-import readline from "readline";
 import Generation from "./generation";
 import Cell from "./cell";
 import Board from "./board";
-
-function setup() {
-  readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-  });
-  readline.emitKeypressEvents(process.stdin);
-  process.stdin.setRawMode(true);
-}
 
 function updateBoard(current: Generation): Generation {
   let next = current.template();
@@ -54,7 +44,6 @@ async function gameLoop() {
   }
 }
 
-setup();
 gameLoop();
 
 export {};

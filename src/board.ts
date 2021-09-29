@@ -34,7 +34,6 @@ export default class Board {
         margin: 0,
         borderStyle: "single",
         borderColor: "yellowBright",
-        backgroundColor: "#222222",
       })
     );
   };
