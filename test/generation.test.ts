@@ -1,5 +1,6 @@
 import Generation from "../src/generation";
 import Cell from "../src/cell";
+import { assert } from "console";
 
 describe("Generation", () => {
   describe("Creation", () => {
@@ -81,6 +82,20 @@ describe("Generation", () => {
       gen.update(1, 1, new Cell(true));
       gen.update(1, 0, new Cell(true));
       expect(gen.populatedNeighbours(0, 0).length).toBe(3);
+    });
+  });
+
+  describe("Comparing", () => {
+    it("returns equal based on populated cells only", () => {
+      let gen1 = new Generation(2, 2);
+      let gen2 = new Generation(2, 2);
+      let gen3 = new Generation(1, 2);
+      let gen4 = new Generation(2, 2);
+      gen4.update(0, 1, new Cell(true));
+
+      expect(gen1.equals(gen2)).toBeTruthy();
+      expect(gen1.equals(gen3)).toBeFalsy();
+      expect(gen1.equals(gen4)).toBeFalsy();
     });
   });
 });

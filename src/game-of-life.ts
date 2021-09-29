@@ -40,7 +40,7 @@ async function gameLoop() {
 
   while (true) {
     let next = updateBoard(current);
-    if (next == current) {
+    if (next.equals(current)) {
       return;
     } else {
       current = next;

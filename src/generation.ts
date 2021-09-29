@@ -50,6 +50,10 @@ export default class Generation {
     return this._id;
   };
 
+  equals = (other: Generation): boolean => {
+    return JSON.stringify(this.cells()) === JSON.stringify(other.cells());
+  };
+
   neighbours = (x: number, y: number): Cell[] => {
     let neighbours = new Array();
     let left = x - 1;
