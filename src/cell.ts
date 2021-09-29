@@ -24,7 +24,7 @@ export default class Cell {
           observer.cellSpawning();
           return new Cell(true, 2);
         } else {
-          observer.cellDying();
+          //   observer.cellDying();
           return new Cell(false, 0);
         }
       case 3:
@@ -35,7 +35,9 @@ export default class Cell {
           return new Cell(true, 1);
         }
       default:
-        observer.cellDying();
+        if (this.isAlive) {
+          observer.cellDying();
+        }
         return new Cell(false, 0);
     }
   }

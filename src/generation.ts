@@ -4,6 +4,7 @@ import { RecordingObserver } from "./cell-observer";
 export default class Generation {
   private _cells: Cell[][];
   private _id: number;
+  private _updates: String[] = [];
   private observer: RecordingObserver = new RecordingObserver();
 
   constructor(
@@ -21,6 +22,10 @@ export default class Generation {
     this._id = 1;
   }
 
+  get updates(): String[] {
+    return this._updates;
+  }
+
   regenerate = (): Generation => {
     let next = this.template();
     for (let x = 0; x < this.width; x++) {
@@ -28,6 +33,8 @@ export default class Generation {
         next.update(x, y, this.evolve(x, y));
       }
     }
+
+    next._updates = this.observer.record();
 
     if (this.equals(next)) {
       throw new Error("Steady state found at generation " + this._id);

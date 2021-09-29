@@ -1,7 +1,7 @@
 import { eventNames } from "process";
 
 export class RecordingObserver {
-  private events = new Array();
+  private events: String[] = [];
   private x: number = 0;
   private y: number = 0;
 
@@ -15,7 +15,7 @@ export class RecordingObserver {
   };
 
   cellDying = () => {
-    this.events.push("spawning at " + this.x + ", " + this.y);
+    this.events.push("Dying at " + this.x + ", " + this.y);
   };
 
   record = (): String[] => {
