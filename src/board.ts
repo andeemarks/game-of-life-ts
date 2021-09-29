@@ -14,13 +14,13 @@ export default class Board {
       )
     );
 
-    console.log("Generation: " + current.id());
+    console.log("Generation: " + current.id);
     let board: string = "";
     for (let x = 0; x < current.width; x++) {
       for (let y = 0; y < current.height; y++) {
-        let cell = current.cells()[x][y];
-        board += cell.isAlive()
-          ? cell.age() > 1
+        let cell = current.cells[x][y];
+        board += cell.isAlive
+          ? cell.age > 1
             ? chalk.white.bold.bgBlack("֎")
             : chalk.yellow.bold.bgBlack("֎")
           : chalk.bgBlack(" ");

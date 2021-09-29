@@ -5,15 +5,15 @@ import { assert } from "console";
 describe("Generation", () => {
   describe("Creation", () => {
     it("defaults to 0 size", () => {
-      expect(new Generation().cells().length).toBe(0);
+      expect(new Generation().cells.length).toBe(0);
     });
 
     it("defaults to first generation", () => {
-      expect(new Generation().id()).toBe(1);
+      expect(new Generation().id).toBe(1);
     });
 
     it("holds all cells for specified dimensions", () => {
-      let cells = new Generation(2, 3).cells();
+      let cells = new Generation(2, 3).cells;
       expect(cells.length).toBe(2);
       expect(cells[0].length).toBe(3);
       expect(cells[0][0]).toBeInstanceOf(Cell);
@@ -32,7 +32,7 @@ describe("Generation", () => {
     let clone = original.template();
 
     it("increments id", () => {
-      expect(clone.id()).toBe(2);
+      expect(clone.id).toBe(2);
     });
 
     it("inherits size", () => {
@@ -41,11 +41,11 @@ describe("Generation", () => {
     });
 
     it("resets population", () => {
-      let cells = clone.cells();
-      expect(cells[0][0].isAlive()).toBeFalsy();
-      expect(cells[0][1].isAlive()).toBeFalsy();
-      expect(cells[1][1].isAlive()).toBeFalsy();
-      expect(cells[1][0].isAlive()).toBeFalsy();
+      let cells = clone.cells;
+      expect(cells[0][0].isAlive).toBeFalsy();
+      expect(cells[0][1].isAlive).toBeFalsy();
+      expect(cells[1][1].isAlive).toBeFalsy();
+      expect(cells[1][0].isAlive).toBeFalsy();
     });
   });
 

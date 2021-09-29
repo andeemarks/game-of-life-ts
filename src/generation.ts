@@ -2,12 +2,11 @@ import Cell from "../src/cell";
 import { RecordingObserver } from "./cell-observer";
 
 export default class Generation {
-  // TODO: Is this the right naming convention?
   private _cells: Cell[][];
-  public readonly width: number;
-  public readonly height: number;
   private _id: number;
   private observer: RecordingObserver = new RecordingObserver();
+  public readonly width: number;
+  public readonly height: number;
 
   constructor(width: number = 0, height: number = 0) {
     this._cells = new Array(width);
@@ -42,16 +41,16 @@ export default class Generation {
     this._cells[x][y] = cell;
   };
 
-  cells = (): Cell[][] => {
+  get cells(): Cell[][] {
     return this._cells;
-  };
+  }
 
-  id = (): number => {
+  get id(): number {
     return this._id;
-  };
+  }
 
   equals = (other: Generation): boolean => {
-    return JSON.stringify(this.cells()) === JSON.stringify(other.cells());
+    return JSON.stringify(this.cells) === JSON.stringify(other.cells);
   };
 
   neighbours = (x: number, y: number): Cell[] => {
@@ -78,7 +77,7 @@ export default class Generation {
 
   populatedNeighbours = (x: number, y: number): Cell[] => {
     return this.neighbours(x, y).filter((cell) => {
-      return cell.isAlive();
+      return cell.isAlive;
     });
   };
 }

@@ -1,26 +1,26 @@
 import { NullObserver } from "./cell-observer";
 
 export default class Cell {
-  private alive = false;
+  private _isAlive = false;
   private _age = 0;
 
   constructor(isAlive: boolean, age: number = 1) {
-    this.alive = isAlive;
+    this._isAlive = isAlive;
     this._age = age;
   }
 
-  isAlive(): boolean {
-    return this.alive;
+  get isAlive(): boolean {
+    return this._isAlive;
   }
 
-  age(): number {
+  get age(): number {
     return this._age;
   }
 
   evolve(neighbourCount: number, observer = new NullObserver()): Cell {
     switch (neighbourCount) {
       case 2:
-        if (this.isAlive()) {
+        if (this.isAlive) {
           observer.cellSpawning();
           return new Cell(true, 2);
         } else {
@@ -29,7 +29,7 @@ export default class Cell {
         }
       case 3:
         observer.cellSpawning();
-        if (this.isAlive()) {
+        if (this.isAlive) {
           return new Cell(true, 2);
         } else {
           return new Cell(true, 1);
