@@ -3,7 +3,7 @@ import Generation from "./generation";
 import Cell from "./cell";
 import showBoard from "./board";
 
-function updateBoard(current: Generation): Generation {
+function regenerate(current: Generation): Generation {
   let next = current.template();
   for (let x = 0; x < current.width; x++) {
     for (let y = 0; y < current.height; y++) {
@@ -19,11 +19,11 @@ function delay(ms: number) {
 }
 
 function seed(gen: Generation): Generation {
-  gen.update(4, 5, new Cell(true));
-  gen.update(5, 6, new Cell(true));
-  gen.update(5, 7, new Cell(true));
-  gen.update(4, 7, new Cell(true));
-  gen.update(6, 7, new Cell(true));
+  gen.seed(4, 5);
+  gen.seed(5, 6);
+  gen.seed(5, 7);
+  gen.seed(4, 7);
+  gen.seed(6, 7);
 
   return gen;
 }
@@ -35,7 +35,7 @@ async function gameLoop() {
   showBoard(current);
 
   while (true) {
-    let next = updateBoard(current);
+    let next = regenerate(current);
     if (next.equals(current)) {
       return; //TODO Need a more elegant way of handling steady state
     } else {

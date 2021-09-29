@@ -5,10 +5,11 @@ export default class Generation {
   private _cells: Cell[][];
   private _id: number;
   private observer: RecordingObserver = new RecordingObserver();
-  public readonly width: number;
-  public readonly height: number;
 
-  constructor(width: number = 0, height: number = 0) {
+  constructor(
+    public readonly width: number = 0,
+    public readonly height: number = 0
+  ) {
     this._cells = new Array(width);
     for (let x = 0; x < width; x++) {
       this._cells[x] = new Array(height);
@@ -18,8 +19,6 @@ export default class Generation {
     }
 
     this._id = 1;
-    this.width = width;
-    this.height = height;
   }
 
   template = (): Generation => {
@@ -37,8 +36,12 @@ export default class Generation {
     return this._cells[x][y].evolve(neighbours.length, this.observer);
   };
 
-  update = (x: number, y: number, cell: Cell) => {
+  update = (x: number, y: number, cell: Cell = new Cell(true)) => {
     this._cells[x][y] = cell;
+  };
+
+  seed = (x: number, y: number) => {
+    this.update(x, y);
   };
 
   get cells(): Cell[][] {
