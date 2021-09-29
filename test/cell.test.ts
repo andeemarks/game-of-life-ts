@@ -7,37 +7,41 @@ describe("Cell", () => {
   });
 
   describe("dead cells", () => {
+    let deadCell = new Cell(false);
     it("spawn with 3 neighbours", () => {
-      expect(new Cell(false).evolve(3).isAlive()).toBeTruthy();
+      expect(deadCell.evolve(3).isAlive()).toBeTruthy();
     });
     it("remain dead with any other neightbour count", () => {
-      expect(new Cell(false).evolve(1).isAlive()).toBeFalsy();
-      expect(new Cell(false).evolve(2).isAlive()).toBeFalsy();
-      expect(new Cell(false).evolve(4).isAlive()).toBeFalsy();
-      expect(new Cell(false).evolve(5).isAlive()).toBeFalsy();
-      expect(new Cell(false).evolve(6).isAlive()).toBeFalsy();
-      expect(new Cell(false).evolve(7).isAlive()).toBeFalsy();
-      expect(new Cell(false).evolve(8).isAlive()).toBeFalsy();
+      expect(deadCell.evolve(1).isAlive()).toBeFalsy();
+      expect(deadCell.evolve(2).isAlive()).toBeFalsy();
+      expect(deadCell.evolve(4).isAlive()).toBeFalsy();
+      expect(deadCell.evolve(5).isAlive()).toBeFalsy();
+      expect(deadCell.evolve(6).isAlive()).toBeFalsy();
+      expect(deadCell.evolve(7).isAlive()).toBeFalsy();
+      expect(deadCell.evolve(8).isAlive()).toBeFalsy();
     });
   });
 
   describe("live cells", () => {
+    let liveCell = new Cell(true);
     it("die when overcrowded", () => {
-      expect(new Cell(true).evolve(4).isAlive()).toBeFalsy();
-      expect(new Cell(true).evolve(5).isAlive()).toBeFalsy();
-      expect(new Cell(true).evolve(6).isAlive()).toBeFalsy();
-      expect(new Cell(true).evolve(7).isAlive()).toBeFalsy();
-      expect(new Cell(true).evolve(8).isAlive()).toBeFalsy();
+      expect(liveCell.evolve(4).isAlive()).toBeFalsy();
+      expect(liveCell.evolve(5).isAlive()).toBeFalsy();
+      expect(liveCell.evolve(6).isAlive()).toBeFalsy();
+      expect(liveCell.evolve(7).isAlive()).toBeFalsy();
+      expect(liveCell.evolve(8).isAlive()).toBeFalsy();
     });
 
     it("die when lonely", () => {
-      expect(new Cell(true).evolve(0).isAlive()).toBeFalsy();
-      expect(new Cell(true).evolve(1).isAlive()).toBeFalsy();
+      expect(liveCell.evolve(0).isAlive()).toBeFalsy();
+      expect(liveCell.evolve(1).isAlive()).toBeFalsy();
     });
 
-    it("survive with the right number of neighbours", () => {
-      expect(new Cell(true).evolve(2).isAlive()).toBeTruthy();
-      expect(new Cell(true).evolve(3).isAlive()).toBeTruthy();
+    it("thrive with the right number of neighbours", () => {
+      expect(liveCell.evolve(2).isAlive()).toBeTruthy();
+      expect(liveCell.evolve(2).age()).toBe(2);
+      expect(liveCell.evolve(3).isAlive()).toBeTruthy();
+      expect(liveCell.evolve(3).age()).toBe(2);
     });
   });
 });

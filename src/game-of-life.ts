@@ -28,20 +28,24 @@ function delay(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+function seed(gen: Generation) {
+  gen.update(4, 5, new Cell(true));
+  gen.update(5, 6, new Cell(true));
+  gen.update(5, 7, new Cell(true));
+  gen.update(4, 7, new Cell(true));
+  gen.update(6, 7, new Cell(true));
+}
+
 async function gameLoop() {
   let current: Generation = new Generation(20, 20);
+  seed(current);
 
-  current.update(4, 5, new Cell(true));
-  current.update(5, 6, new Cell(true));
-  current.update(5, 7, new Cell(true));
-  current.update(4, 7, new Cell(true));
-  current.update(6, 7, new Cell(true));
   new Board().show(current);
 
   while (true) {
     let next = updateBoard(current);
     if (next.equals(current)) {
-      return;
+      return; //TODO Need a more elegant way of handling steady state
     } else {
       current = next;
     }

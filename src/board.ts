@@ -20,7 +20,9 @@ export default class Board {
       for (let y = 0; y < current.height; y++) {
         let cell = current.cells()[x][y];
         board += cell.isAlive()
-          ? chalk.yellow.bold.bgBlack("֎")
+          ? cell.age() > 1
+            ? chalk.white.bold.bgBlack("֎")
+            : chalk.yellow.bold.bgBlack("֎")
           : chalk.bgBlack(" ");
       }
       board += "\n";
