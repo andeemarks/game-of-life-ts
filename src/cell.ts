@@ -1,3 +1,5 @@
+import { NullObserver } from "./cell-observer";
+
 export default class Cell {
   private alive = false;
 
@@ -9,17 +11,21 @@ export default class Cell {
     return this.alive;
   }
 
-  evolve(neighbourCount: number): Cell {
+  evolve(neighbourCount: number, observer = new NullObserver()): Cell {
     switch (neighbourCount) {
       case 2:
         if (this.isAlive()) {
+          observer.cellSpawning();
           return new Cell(true);
         } else {
+          observer.cellDying();
           return new Cell(false);
         }
       case 3:
+        observer.cellSpawning();
         return new Cell(true);
       default:
+        observer.cellDying();
         return new Cell(false);
     }
   }

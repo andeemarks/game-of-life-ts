@@ -1,4 +1,5 @@
 import Cell from "../src/cell";
+import { RecordingObserver } from "./cell-observer";
 
 export default class Generation {
   // TODO: Is this the right naming convention?
@@ -6,6 +7,7 @@ export default class Generation {
   public readonly width: number;
   public readonly height: number;
   private _id: number;
+  private observer: RecordingObserver = new RecordingObserver();
 
   constructor(width: number = 0, height: number = 0) {
     this._cells = new Array(width);
@@ -31,7 +33,9 @@ export default class Generation {
   evolve = (x: number, y: number): Cell => {
     let neighbours: Cell[] = this.populatedNeighbours(x, y);
 
-    return this._cells[x][y].evolve(neighbours.length);
+    this.observer.location(x, y);
+
+    return this._cells[x][y].evolve(neighbours.length, this.observer);
   };
 
   update = (x: number, y: number, cell: Cell) => {
