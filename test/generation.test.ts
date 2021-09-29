@@ -20,7 +20,23 @@ describe("Generation", () => {
   });
 
   it("finds a full set of neighbours for a cell away from borders", () => {
-    let neighbours = new Generation(10, 10).neighbours(5, 5);
+    let neighbours = new Generation(3, 3).neighbours(1, 1);
     expect(neighbours.length).toBe(8);
+  });
+
+  it("finds only 3 neighbours for a cell in the corner", () => {
+    let gen = new Generation(3, 3);
+    expect(gen.neighbours(0, 0).length).toBe(3);
+    expect(gen.neighbours(2, 2).length).toBe(3);
+    expect(gen.neighbours(0, 2).length).toBe(3);
+    expect(gen.neighbours(2, 0).length).toBe(3);
+  });
+
+  it("finds only 5 neighbours for a cell one a side", () => {
+    let gen = new Generation(3, 3);
+    expect(gen.neighbours(0, 1).length).toBe(5);
+    expect(gen.neighbours(2, 1).length).toBe(5);
+    expect(gen.neighbours(1, 0).length).toBe(5);
+    expect(gen.neighbours(1, 2).length).toBe(5);
   });
 });
