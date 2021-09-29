@@ -7,8 +7,6 @@ import readline from "readline";
 import Generation from "./generation";
 import Cell from "./cell";
 
-let current: Generation = new Generation(10, 10);
-
 function setup() {
   readline.createInterface({
     input: process.stdin,
@@ -21,18 +19,14 @@ function setup() {
   console.log(
     chalk.yellow(figlet.textSync("Game of Life", { horizontalLayout: "full" }))
   );
-
-  current.update(4, 5, new Cell(true));
-  current.update(5, 5, new Cell(true));
-  current.update(6, 5, new Cell(true));
-  showBoard(current.cells());
 }
 
-function showBoard(cells: Cell[][]) {
+function showBoard(current: Generation) {
+  console.log("Generation: " + current.id());
   let board: string = "";
   for (let x = 0; x < 10; x++) {
     for (let y = 0; y < 10; y++) {
-      board += cells[x][y].show();
+      board += current.cells()[x][y].show();
     }
     board += "\n";
   }
@@ -48,8 +42,7 @@ function showBoard(cells: Cell[][]) {
   );
 }
 
-function updateBoard() {
-  console.log("Generation: " + current.id());
+function updateBoard(current: Generation): Generation {
   let next = current.template();
   for (let x = 0; x < current.width; x++) {
     for (let y = 0; y < current.height; y++) {
@@ -57,13 +50,20 @@ function updateBoard() {
     }
   }
 
-  current = next;
-  showBoard(current.cells());
+  return next;
 }
 
 function gameLoop() {
+  let current: Generation = new Generation(10, 10);
+
+  current.update(4, 5, new Cell(true));
+  current.update(5, 5, new Cell(true));
+  current.update(6, 5, new Cell(true));
+  showBoard(current);
+
   process.stdin.on("keypress", (_) => {
-    updateBoard();
+    current = updateBoard(current);
+    showBoard(current);
   });
 }
 
