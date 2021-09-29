@@ -21,6 +21,17 @@ export default class Generation {
     this._id = 1;
   }
 
+  regenerate = (): Generation => {
+    let next = this.template();
+    for (let x = 0; x < this.width; x++) {
+      for (let y = 0; y < this.height; y++) {
+        next.update(x, y, this.evolve(x, y));
+      }
+    }
+
+    return next;
+  };
+
   template = (): Generation => {
     let clone = new Generation(this.width, this.height);
     clone._id = this._id + 1;

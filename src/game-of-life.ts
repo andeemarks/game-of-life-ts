@@ -1,18 +1,6 @@
 #!/usr/bin/env node
 import Generation from "./generation";
-import Cell from "./cell";
 import showBoard from "./board";
-
-function regenerate(current: Generation): Generation {
-  let next = current.template();
-  for (let x = 0; x < current.width; x++) {
-    for (let y = 0; y < current.height; y++) {
-      next.update(x, y, current.evolve(x, y));
-    }
-  }
-
-  return next;
-}
 
 function delay(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -35,7 +23,7 @@ async function gameLoop() {
   showBoard(current);
 
   while (true) {
-    let next = regenerate(current);
+    let next = current.regenerate();
     if (next.equals(current)) {
       return; //TODO Need a more elegant way of handling steady state
     } else {
