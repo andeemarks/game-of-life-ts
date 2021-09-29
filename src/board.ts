@@ -18,7 +18,10 @@ export default class Board {
     let board: string = "";
     for (let x = 0; x < current.width; x++) {
       for (let y = 0; y < current.height; y++) {
-        board += current.cells()[x][y].show();
+        let cell = current.cells()[x][y];
+        board += cell.isAlive()
+          ? chalk.yellow.bold.bgBlack("֎")
+          : chalk.bgBlack(" ");
       }
       board += "\n";
     }

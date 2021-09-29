@@ -1,4 +1,3 @@
-const chalk = require("chalk");
 export default class Cell {
   private alive = false;
 
@@ -23,9 +22,5 @@ export default class Cell {
       default:
         return new Cell(false);
     }
-  }
-
-  show(): string {
-    return this.alive ? chalk.bgYellow("  ") : chalk.bgGray("  ");
   }
 }
