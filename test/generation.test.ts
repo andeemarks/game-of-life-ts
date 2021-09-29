@@ -39,4 +39,17 @@ describe("Generation", () => {
     expect(gen.neighbours(1, 0).length).toBe(5);
     expect(gen.neighbours(1, 2).length).toBe(5);
   });
+
+  it("finds no populated neighbours in an empty generation", () => {
+    let gen = new Generation(3, 3);
+    expect(gen.populatedNeighbours(0, 1).length).toBe(0);
+  });
+
+  it("finds populated neighbours in a fully populated generation", () => {
+    let gen = new Generation(2, 2);
+    gen.update(0, 1, new Cell(true));
+    gen.update(1, 1, new Cell(true));
+    gen.update(1, 0, new Cell(true));
+    expect(gen.populatedNeighbours(0, 0).length).toBe(3);
+  });
 });

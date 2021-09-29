@@ -1,3 +1,4 @@
+const chalk = require("chalk");
 export default class Cell {
   private alive = false;
 
@@ -12,11 +13,19 @@ export default class Cell {
   evolve(neighbourCount: number): Cell {
     switch (neighbourCount) {
       case 2:
-        return this.alive ? new Cell(true) : new Cell(false);
+        if (this.isAlive()) {
+          return new Cell(true);
+        } else {
+          return new Cell(false);
+        }
       case 3:
         return new Cell(true);
       default:
         return new Cell(false);
     }
+  }
+
+  show(): string {
+    return this.alive ? chalk.bgWhite("  ") : chalk.bgGray("  ");
   }
 }

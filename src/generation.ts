@@ -14,11 +14,21 @@ export default class Generation {
     }
   }
 
+  evolve = (x: number, y: number): Cell => {
+    let neighbours: Cell[] = this.populatedNeighbours(x, y);
+
+    return this._cells[x][y].evolve(neighbours.length);
+  };
+
+  update = (x: number, y: number, cell: Cell) => {
+    this._cells[x][y] = cell;
+  };
+
   cells = (): Cell[][] => {
     return this._cells;
   };
 
-  neighbours = (x: number, y: number): Cell[][] => {
+  neighbours = (x: number, y: number): Cell[] => {
     let neighbours = new Array();
     let left = x - 1;
     let right = x + 1;
@@ -39,5 +49,11 @@ export default class Generation {
       neighbours.push(this._cells[right][bottom]); // bottom right neighbour
 
     return neighbours;
+  };
+
+  populatedNeighbours = (x: number, y: number): Cell[] => {
+    return this.neighbours(x, y).filter((cell) => {
+      return cell.isAlive();
+    });
   };
 }
