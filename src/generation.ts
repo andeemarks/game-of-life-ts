@@ -3,16 +3,30 @@ import Cell from "../src/cell";
 export default class Generation {
   // TODO: Is this the right naming convention?
   private _cells: Cell[][];
+  public readonly width: number;
+  public readonly height: number;
+  private _id: number;
 
-  constructor(maxX: number = 0, maxY: number = 0) {
-    this._cells = new Array(maxX);
-    for (let x = 0; x < maxX; x++) {
-      this._cells[x] = new Array(maxY);
-      for (let y = 0; y < maxY; y++) {
+  constructor(width: number = 0, height: number = 0) {
+    this._cells = new Array(width);
+    for (let x = 0; x < width; x++) {
+      this._cells[x] = new Array(height);
+      for (let y = 0; y < height; y++) {
         this._cells[x][y] = new Cell(false);
       }
     }
+
+    this._id = 1;
+    this.width = width;
+    this.height = height;
   }
+
+  template = (): Generation => {
+    let clone = new Generation(this.width, this.height);
+    clone._id = this._id + 1;
+
+    return clone;
+  };
 
   evolve = (x: number, y: number): Cell => {
     let neighbours: Cell[] = this.populatedNeighbours(x, y);
@@ -26,6 +40,10 @@ export default class Generation {
 
   cells = (): Cell[][] => {
     return this._cells;
+  };
+
+  id = (): number => {
+    return this._id;
   };
 
   neighbours = (x: number, y: number): Cell[] => {
