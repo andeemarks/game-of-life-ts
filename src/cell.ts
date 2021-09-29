@@ -26,6 +26,6 @@ export default class Cell {
   }
 
   show(): string {
-    return this.alive ? chalk.bgWhite("  ") : chalk.bgGray("  ");
+    return this.alive ? chalk.bgYellow("  ") : chalk.bgGray("  ");
   }
 }

@@ -24,18 +24,30 @@ function updateBoard(current: Generation): Generation {
   return next;
 }
 
-function gameLoop() {
-  let current: Generation = new Generation(10, 10);
+function delay(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function gameLoop() {
+  let current: Generation = new Generation(20, 20);
 
   current.update(4, 5, new Cell(true));
-  current.update(5, 5, new Cell(true));
-  current.update(6, 5, new Cell(true));
+  current.update(5, 6, new Cell(true));
+  current.update(5, 7, new Cell(true));
+  current.update(4, 7, new Cell(true));
+  current.update(6, 7, new Cell(true));
   new Board().show(current);
 
-  process.stdin.on("keypress", (_) => {
-    current = updateBoard(current);
+  while (true) {
+    let next = updateBoard(current);
+    if (next == current) {
+      return;
+    } else {
+      current = next;
+    }
     new Board().show(current);
-  });
+    await delay(500);
+  }
 }
 
 setup();
