@@ -52,18 +52,17 @@ export default class Generation {
     let right = x + 1;
     let top = y - 1;
     let bottom = y + 1;
-    let width = this._cells.length;
-    let height = this._cells[0].length;
 
     if (x > 0) neighbours.push(this._cells[left][y]); // left neighbour
     if (y > 0) neighbours.push(this._cells[x][top]); // top neighbour
     if (x > 0 && y > 0) neighbours.push(this._cells[left][top]); // top left neighbour
-    if (x > 0 && y < height - 1) neighbours.push(this._cells[left][bottom]); // bottom left neighbour
+    if (x > 0 && y < this.height - 1)
+      neighbours.push(this._cells[left][bottom]); // bottom left neighbour
 
-    if (x < width - 1) neighbours.push(this._cells[right][y]); // right neighbour
-    if (y < height - 1) neighbours.push(this._cells[x][bottom]); // bottom neighbour
-    if (y > 0 && x < width - 1) neighbours.push(this._cells[right][top]); // top right neighbour
-    if (x < width - 1 && y < height - 1)
+    if (x < this.width - 1) neighbours.push(this._cells[right][y]); // right neighbour
+    if (y < this.height - 1) neighbours.push(this._cells[x][bottom]); // bottom neighbour
+    if (y > 0 && x < this.width - 1) neighbours.push(this._cells[right][top]); // top right neighbour
+    if (x < this.width - 1 && y < this.height - 1)
       neighbours.push(this._cells[right][bottom]); // bottom right neighbour
 
     return neighbours;
