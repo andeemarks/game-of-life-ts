@@ -29,6 +29,10 @@ export default class Generation {
       }
     }
 
+    if (this.equals(next)) {
+      throw new Error("Steady state found at generation " + this._id);
+    }
+
     return next;
   };
 

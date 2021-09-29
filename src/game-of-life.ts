@@ -23,12 +23,7 @@ async function gameLoop() {
   showBoard(current);
 
   while (true) {
-    let next = current.regenerate();
-    if (next.equals(current)) {
-      return; //TODO Need a more elegant way of handling steady state
-    } else {
-      current = next;
-    }
+    current = current.regenerate();
     showBoard(current);
     await delay(500);
   }

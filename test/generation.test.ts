@@ -87,15 +87,26 @@ describe("Generation", () => {
 
   describe("Comparing", () => {
     it("returns equal based on populated cells only", () => {
-      let gen1 = new Generation(2, 2);
-      let gen2 = new Generation(2, 2);
+      let populatedGen = new Generation(2, 2);
+      let emptyGen = new Generation(2, 2);
       let gen3 = new Generation(1, 2);
       let gen4 = new Generation(2, 2);
       gen4.update(0, 1, new Cell(true));
 
-      expect(gen1.equals(gen2)).toBeTruthy();
-      expect(gen1.equals(gen3)).toBeFalsy();
-      expect(gen1.equals(gen4)).toBeFalsy();
+      expect(populatedGen.equals(emptyGen)).toBeTruthy();
+      expect(populatedGen.equals(gen3)).toBeFalsy();
+      expect(populatedGen.equals(gen4)).toBeFalsy();
+    });
+  });
+
+  describe("Regenerating", () => {
+    it("errors if steady state is reached", () => {
+      let populatedGen = new Generation(2, 2);
+      populatedGen.update(0, 0, new Cell(true));
+      let emptyGen = populatedGen.regenerate();
+      expect(() => {
+        emptyGen.regenerate();
+      }).toThrow();
     });
   });
 });
