@@ -9,6 +9,13 @@
   "bin": {
     "game-of-life": "./lib/src/game-of-life.js"
   },
+  "contributors": [
+    {
+      "name": "Andy Marks",
+      "email": "vampwillow@gmail.com",
+      "url": "https://twitter.com/andeemarks"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/andeemarks/game-of-life-ts"
