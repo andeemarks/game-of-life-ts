@@ -19,15 +19,20 @@ function seed(gen: Generation): Generation {
 async function gameLoop(): Promise<void> {
   let current: Generation = new Generation(20, 20);
   const board: Board = new Board();
+  let isEvolving = true;
 
   current = seed(current);
 
   board.show(current);
 
-  while (true) {
-    current = current.regenerate();
-    board.show(current);
-    await delay(500);
+  while (isEvolving) {
+    try {
+      current = current.regenerate();
+      board.show(current);
+      await delay(500);
+    } catch (e) {
+      isEvolving = false;
+    }
   }
 }
 
