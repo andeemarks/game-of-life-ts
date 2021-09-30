@@ -1,7 +1,8 @@
 import { eventNames } from "process";
 
 export class RecordingObserver {
-  private events: String[] = [];
+  private spawnEvents: String[] = [];
+  private deathEvents: String[] = [];
   private x: number = 0;
   private y: number = 0;
 
@@ -11,15 +12,15 @@ export class RecordingObserver {
   };
 
   cellSpawning = () => {
-    this.events.push("spawning at " + this.x + ", " + this.y);
+    this.spawnEvents.push(this.x + "x" + this.y);
   };
 
   cellDying = () => {
-    this.events.push("Dying at " + this.x + ", " + this.y);
+    this.deathEvents.push(this.x + "x" + this.y);
   };
 
-  record = (): String[] => {
-    return this.events;
+  record = (): Object => {
+    return { spawn: this.spawnEvents, death: this.deathEvents };
   };
 }
 

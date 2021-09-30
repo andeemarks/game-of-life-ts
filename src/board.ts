@@ -12,7 +12,6 @@ export default function show(current: Generation) {
   );
 
   console.log("Generation: " + current.id);
-  console.log(current.updates.length);
 
   let board: string = "";
   for (let x = 0; x < current.width; x++) {
@@ -35,4 +34,6 @@ export default function show(current: Generation) {
       borderColor: "yellowBright",
     })
   );
+
+  console.log(current.updates);
 }
