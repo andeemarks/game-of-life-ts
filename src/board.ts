@@ -39,5 +39,9 @@ export default function show(current: Generation) {
     })
   );
 
-  console.log(current.updates);
+  console.log(chalk.white("Spawning cells: " + current.updates.spawns.length));
+  console.log(
+    chalk.yellow("Thriving cells: " + current.updates.thrives.length)
+  );
+  console.log(chalk.red("Dying cells: " + current.updates.deaths.length));
 }
