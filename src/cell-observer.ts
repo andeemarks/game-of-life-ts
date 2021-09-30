@@ -1,4 +1,9 @@
-import { eventNames } from "process";
+export class Observation {
+  constructor(
+    public readonly spawns: String[],
+    public readonly deaths: String[]
+  ) {}
+}
 
 export class RecordingObserver {
   private spawnEvents: String[] = [];
@@ -19,8 +24,8 @@ export class RecordingObserver {
     this.deathEvents.push(this.x + "x" + this.y);
   };
 
-  record = (): Object => {
-    return { spawn: this.spawnEvents, death: this.deathEvents };
+  record = (): Observation => {
+    return new Observation(this.spawnEvents, this.deathEvents);
   };
 }
 

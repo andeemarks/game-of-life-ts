@@ -4,6 +4,15 @@ const clear = require("clear");
 const figlet = require("figlet");
 import boxen from "boxen";
 import Generation from "./generation";
+import Cell from "./cell";
+
+function showCell(cell: Cell): String {
+  return cell.isAlive
+    ? cell.age > 1
+      ? chalk.white.bold.bgBlack("֎")
+      : chalk.yellow.bold.bgBlack("֎")
+    : chalk.bgBlack(" ");
+}
 
 export default function show(current: Generation) {
   clear();
@@ -16,12 +25,7 @@ export default function show(current: Generation) {
   let board: string = "";
   for (let x = 0; x < current.width; x++) {
     for (let y = 0; y < current.height; y++) {
-      let cell = current.cells[x][y];
-      board += cell.isAlive
-        ? cell.age > 1
-          ? chalk.white.bold.bgBlack("֎")
-          : chalk.yellow.bold.bgBlack("֎")
-        : chalk.bgBlack(" ");
+      board += showCell(current.cells[x][y]);
     }
     board += "\n";
   }

@@ -1,10 +1,10 @@
 import Cell from "../src/cell";
-import { RecordingObserver } from "./cell-observer";
+import { RecordingObserver, Observation } from "./cell-observer";
 
 export default class Generation {
   private _cells: Cell[][];
   private _id: number;
-  private _updates: Object = {};
+  private _updates: Observation = new Observation([""], [""]);
   private observer: RecordingObserver = new RecordingObserver();
 
   constructor(
@@ -22,7 +22,7 @@ export default class Generation {
     this._id = 1;
   }
 
-  get updates(): Object {
+  get updates(): Observation {
     return this._updates;
   }
 
