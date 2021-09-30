@@ -1,8 +1,8 @@
 export class Observation {
   constructor(
-    public readonly spawns: String[],
-    public readonly deaths: String[],
-    public readonly thrives: String[]
+    public readonly spawns: string[],
+    public readonly deaths: string[],
+    public readonly thrives: string[]
   ) {}
 }
 
@@ -13,11 +13,11 @@ interface CellObserver {
 }
 
 export class RecordingObserver implements CellObserver {
-  private spawnEvents: String[] = [];
-  private deathEvents: String[] = [];
-  private thriveEvents: String[] = [];
-  private x: number = 0;
-  private y: number = 0;
+  private spawnEvents: string[] = [];
+  private deathEvents: string[] = [];
+  private thriveEvents: string[] = [];
+  private x = 0;
+  private y = 0;
 
   location = (x: number, y: number) => {
     this.x = x;

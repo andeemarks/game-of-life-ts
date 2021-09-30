@@ -7,7 +7,7 @@ describe("Cell", () => {
   });
 
   describe("dead cells", () => {
-    let deadCell = new Cell(false);
+    const deadCell = new Cell(false);
     it("spawn with 3 neighbours", () => {
       expect(deadCell.evolve(3).isAlive).toBeTruthy();
     });
@@ -23,7 +23,7 @@ describe("Cell", () => {
   });
 
   describe("live cells", () => {
-    let liveCell = new Cell(true);
+    const liveCell = new Cell(true);
     it("die when overcrowded", () => {
       expect(liveCell.evolve(4).isAlive).toBeFalsy();
       expect(liveCell.evolve(5).isAlive).toBeFalsy();

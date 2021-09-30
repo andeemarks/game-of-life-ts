@@ -18,7 +18,7 @@ function seed(gen: Generation): Generation {
 
 async function gameLoop() {
   let current: Generation = new Generation(20, 20);
-  let board: Board = new Board();
+  const board: Board = new Board();
 
   current = seed(current);
 

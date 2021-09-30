@@ -13,7 +13,7 @@ describe("Generation", () => {
     });
 
     it("holds all cells for specified dimensions", () => {
-      let cells = new Generation(2, 3).cells;
+      const cells = new Generation(2, 3).cells;
       expect(cells.length).toBe(2);
       expect(cells[0].length).toBe(3);
       expect(cells[0][0]).toBeInstanceOf(Cell);
@@ -27,9 +27,9 @@ describe("Generation", () => {
   });
 
   describe("Templating", () => {
-    let original = new Generation(2, 2);
+    const original = new Generation(2, 2);
     original.update(0, 0, new Cell(true));
-    let clone = original.template();
+    const clone = original.template();
 
     it("increments id", () => {
       expect(clone.id).toBe(2);
@@ -41,7 +41,7 @@ describe("Generation", () => {
     });
 
     it("resets population", () => {
-      let cells = clone.cells;
+      const cells = clone.cells;
       expect(cells[0][0].isAlive).toBeFalsy();
       expect(cells[0][1].isAlive).toBeFalsy();
       expect(cells[1][1].isAlive).toBeFalsy();
@@ -51,12 +51,12 @@ describe("Generation", () => {
 
   describe("Templating", () => {
     it("finds a full set of neighbours for a cell away from borders", () => {
-      let neighbours = new Generation(3, 3).neighbours(1, 1);
+      const neighbours = new Generation(3, 3).neighbours(1, 1);
       expect(neighbours.length).toBe(8);
     });
 
     it("finds only 3 neighbours for a cell in the corner", () => {
-      let gen = new Generation(3, 3);
+      const gen = new Generation(3, 3);
       expect(gen.neighbours(0, 0).length).toBe(3);
       expect(gen.neighbours(2, 2).length).toBe(3);
       expect(gen.neighbours(0, 2).length).toBe(3);
@@ -64,7 +64,7 @@ describe("Generation", () => {
     });
 
     it("finds only 5 neighbours for a cell one a side", () => {
-      let gen = new Generation(3, 3);
+      const gen = new Generation(3, 3);
       expect(gen.neighbours(0, 1).length).toBe(5);
       expect(gen.neighbours(2, 1).length).toBe(5);
       expect(gen.neighbours(1, 0).length).toBe(5);
@@ -72,12 +72,12 @@ describe("Generation", () => {
     });
 
     it("finds no populated neighbours in an empty generation", () => {
-      let gen = new Generation(3, 3);
+      const gen = new Generation(3, 3);
       expect(gen.populatedNeighbours(0, 1).length).toBe(0);
     });
 
     it("finds populated neighbours in a fully populated generation", () => {
-      let gen = new Generation(2, 2);
+      const gen = new Generation(2, 2);
       gen.update(0, 1, new Cell(true));
       gen.update(1, 1, new Cell(true));
       gen.update(1, 0, new Cell(true));
@@ -87,10 +87,10 @@ describe("Generation", () => {
 
   describe("Comparing", () => {
     it("returns equal based on populated cells only", () => {
-      let populatedGen = new Generation(2, 2);
-      let emptyGen = new Generation(2, 2);
-      let gen3 = new Generation(1, 2);
-      let gen4 = new Generation(2, 2);
+      const populatedGen = new Generation(2, 2);
+      const emptyGen = new Generation(2, 2);
+      const gen3 = new Generation(1, 2);
+      const gen4 = new Generation(2, 2);
       gen4.update(0, 1, new Cell(true));
 
       expect(populatedGen.equals(emptyGen)).toBeTruthy();
@@ -101,9 +101,9 @@ describe("Generation", () => {
 
   describe("Regenerating", () => {
     it("errors if steady state is reached", () => {
-      let populatedGen = new Generation(2, 2);
+      const populatedGen = new Generation(2, 2);
       populatedGen.update(0, 0, new Cell(true));
-      let emptyGen = populatedGen.regenerate();
+      const emptyGen = populatedGen.regenerate();
       expect(() => {
         emptyGen.regenerate();
       }).toThrow();

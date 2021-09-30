@@ -14,7 +14,7 @@ export default class Board {
   private deathCountHistory: number[] = [];
   private thriveCountHistory: number[] = [];
 
-  showCell(cell: Cell): String {
+  showCell(cell: Cell): string {
     return cell.isAlive
       ? cell.age > 1
         ? chalk.white.bold.bgBlack("֎")
@@ -22,11 +22,11 @@ export default class Board {
       : chalk.bgBlack(" ");
   }
 
-  sparkline(data: number[], label: String): string {
+  sparkline(data: number[], label: string): string {
     return Sparkline(data.slice(-22), " " + label) + "\n";
   }
 
-  stats(stats: Observation): String {
+  stats(stats: Observation): string {
     this.spawnCountHistory.push(stats.spawns.length);
     this.deathCountHistory.push(stats.deaths.length);
     this.thriveCountHistory.push(stats.thrives.length);
@@ -47,7 +47,7 @@ export default class Board {
 
     console.log("Generation: " + current.id);
 
-    let board: string = "";
+    let board = "";
     for (let x = 0; x < current.width; x++) {
       for (let y = 0; y < current.height; y++) {
         board += this.showCell(current.cells[x][y]);
