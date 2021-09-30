@@ -6,7 +6,7 @@ export class Observation {
   ) {}
 }
 
-export interface CellObserver {
+interface CellObserver {
   cellSpawning(): void;
   cellDying(): void;
   cellThriving(): void;

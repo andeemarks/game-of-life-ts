@@ -1,5 +1,5 @@
 import Cell from "../src/cell";
-import { RecordingObserver, Observation, CellObserver } from "./cell-observer";
+import { RecordingObserver, Observation } from "./cell-observer";
 
 export default class Generation {
   private _cells: Cell[][];
