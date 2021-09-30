@@ -38,6 +38,7 @@
     "@types/clear": "^0.1.2",
     "@types/clui": "^0.3.1",
     "@types/figlet": "^1.5.4",
+    "box-console": "^2.0.0",
     "chalk": "^4.1.0",
     "clear": "^0.1.0",
     "clui": "^0.3.6"

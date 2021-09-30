@@ -1,6 +1,7 @@
 import chalk from "chalk";
 import clear from "clear";
 import Sparkline from "clui";
+import boxConsole from "box-console";
 
 import { Generation } from "./generation";
 import Cell from "./cell";
@@ -14,9 +15,9 @@ export default class Board {
   showCell(cell: Cell): string {
     return cell.isAlive
       ? cell.age > 1
-        ? chalk.white.bold.bgBlack("֎")
-        : chalk.yellow.bold.bgBlack("֎")
-      : chalk.bgBlack(" ");
+        ? chalk.white.bold.bgBlackBright("֎")
+        : chalk.yellow.bold.bgBlackBright("֎")
+      : chalk.bgBlackBright(" ");
   }
 
   sparkline(data: number[], label: string): string {
@@ -28,9 +29,9 @@ export default class Board {
     this.deathCountHistory.push(stats.deaths.length);
     this.thriveCountHistory.push(stats.thrives.length);
     return (
-      this.sparkline(this.spawnCountHistory, "spawning") +
+      this.sparkline(this.spawnCountHistory, chalk.yellow.bold("spawning")) +
       this.sparkline(this.deathCountHistory, "dying") +
-      this.sparkline(this.thriveCountHistory, "thriving")
+      this.sparkline(this.thriveCountHistory, chalk.white.bold("thriving"))
     );
   }
 
@@ -39,15 +40,16 @@ export default class Board {
 
     console.log("Generation: " + current.id);
 
-    let board = "";
+    let rows = [];
     for (let x = 0; x < current.width; x++) {
+      let row = "";
       for (let y = 0; y < current.height; y++) {
-        board += this.showCell(current.cells[x][y]);
+        row += this.showCell(current.cells[x][y]);
       }
-      board += "\n";
+      rows.push(row);
     }
 
-    console.log(board);
+    boxConsole(rows);
 
     console.log(this.stats(current.updates));
   }
