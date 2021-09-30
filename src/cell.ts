@@ -21,17 +21,18 @@ export default class Cell {
     switch (neighbourCount) {
       case 2:
         if (this.isAlive) {
-          observer.cellSpawning();
+          observer.cellThriving();
           return new Cell(true, 2);
         } else {
-          //   observer.cellDying();
+          observer.cellSpawning();
           return new Cell(false, 0);
         }
       case 3:
-        observer.cellSpawning();
         if (this.isAlive) {
+          observer.cellThriving();
           return new Cell(true, 2);
         } else {
+          observer.cellSpawning();
           return new Cell(true, 1);
         }
       default:
