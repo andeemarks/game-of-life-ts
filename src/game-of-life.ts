@@ -2,10 +2,6 @@
 import { Generation, EntropyError } from "./generation";
 import Board from "./board";
 
-function delay(ms: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
 function seed(gen: Generation): Generation {
   gen.seed(4, 5);
   gen.seed(5, 6);
@@ -18,13 +14,12 @@ function seed(gen: Generation): Generation {
 
 async function gameLoop(): Promise<void> {
   let current: Generation = new Generation(20, 20);
-  const board: Board = new Board();
-  let isEvolving = true;
-
   current = seed(current);
 
+  const board: Board = new Board();
   board.show(current);
 
+  let isEvolving = true;
   while (isEvolving) {
     try {
       current = current.regenerate();
@@ -34,6 +29,10 @@ async function gameLoop(): Promise<void> {
       if (error instanceof EntropyError) isEvolving = false;
     }
   }
+}
+
+function delay(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 gameLoop();
