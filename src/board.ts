@@ -2,7 +2,6 @@ import chalk from "chalk";
 import clear from "clear";
 import Sparkline from "clui";
 
-import boxen from "boxen";
 import { Generation } from "./generation";
 import Cell from "./cell";
 import { Observation } from "./cell-observer";
@@ -48,14 +47,7 @@ export default class Board {
       board += "\n";
     }
 
-    console.log(
-      boxen(board, {
-        padding: 0,
-        margin: 0,
-        borderStyle: "single",
-        borderColor: "yellowBright",
-      })
-    );
+    console.log(board);
 
     console.log(this.stats(current.updates));
   }
