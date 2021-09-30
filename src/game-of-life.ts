@@ -2,7 +2,7 @@
 import Generation from "./generation";
 import Board from "./board";
 
-function delay(ms: number) {
+function delay(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
@@ -16,7 +16,7 @@ function seed(gen: Generation): Generation {
   return gen;
 }
 
-async function gameLoop() {
+async function gameLoop(): Promise<void> {
   let current: Generation = new Generation(20, 20);
   const board: Board = new Board();
 

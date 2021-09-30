@@ -1,8 +1,7 @@
-#!/usr/bin/env node
-const chalk = require("chalk");
-const clear = require("clear");
-const figlet = require("figlet");
-const Sparkline = require("clui").Sparkline;
+import chalk from "chalk";
+import clear from "clear";
+import figlet from "figlet";
+import Sparkline from "clui";
 
 import boxen from "boxen";
 import Generation from "./generation";
@@ -23,7 +22,7 @@ export default class Board {
   }
 
   sparkline(data: number[], label: string): string {
-    return Sparkline(data.slice(-22), " " + label) + "\n";
+    return Sparkline.Sparkline(data.slice(-22), " " + label) + "\n";
   }
 
   stats(stats: Observation): string {
@@ -37,7 +36,7 @@ export default class Board {
     );
   }
 
-  show(current: Generation) {
+  show(current: Generation): void {
     clear();
     console.log(
       chalk.yellow(

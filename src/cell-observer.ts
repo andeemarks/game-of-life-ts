@@ -19,20 +19,20 @@ export class RecordingObserver implements CellObserver {
   private x = 0;
   private y = 0;
 
-  location = (x: number, y: number) => {
+  location = (x: number, y: number): void => {
     this.x = x;
     this.y = y;
   };
 
-  cellSpawning = () => {
+  cellSpawning = (): void => {
     this.spawnEvents.push(this.x + "x" + this.y);
   };
 
-  cellThriving = () => {
+  cellThriving = (): void => {
     this.thriveEvents.push(this.x + "x" + this.y);
   };
 
-  cellDying = () => {
+  cellDying = (): void => {
     this.deathEvents.push(this.x + "x" + this.y);
   };
 
@@ -46,7 +46,7 @@ export class RecordingObserver implements CellObserver {
 }
 
 export class NullObserver implements CellObserver {
-  cellSpawning = () => {};
-  cellDying = () => {};
-  cellThriving = () => {};
+  cellSpawning = (): void => {};
+  cellDying = (): void => {};
+  cellThriving = (): void => {};
 }

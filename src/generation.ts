@@ -58,11 +58,11 @@ export default class Generation {
     return this._cells[x][y].evolve(neighbours.length, this.observer);
   };
 
-  update = (x: number, y: number, cell: Cell = new Cell(true)) => {
+  update = (x: number, y: number, cell: Cell = new Cell(true)): void => {
     this._cells[x][y] = cell;
   };
 
-  seed = (x: number, y: number) => {
+  seed = (x: number, y: number): void => {
     this.update(x, y);
   };
 
