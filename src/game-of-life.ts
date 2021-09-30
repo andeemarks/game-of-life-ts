@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import Generation from "./generation";
-import showBoard from "./board";
+import Board from "./board";
 
 function delay(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -18,13 +18,15 @@ function seed(gen: Generation): Generation {
 
 async function gameLoop() {
   let current: Generation = new Generation(20, 20);
+  let board: Board = new Board();
+
   current = seed(current);
 
-  showBoard(current);
+  board.show(current);
 
   while (true) {
     current = current.regenerate();
-    showBoard(current);
+    board.show(current);
     await delay(500);
   }
 }

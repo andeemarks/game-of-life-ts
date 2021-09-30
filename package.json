@@ -22,8 +22,8 @@
     "eslint-plugin-import": "^2.18.2",
     "jest": "^26.0.0",
     "ts-jest": "^26.0.0",
-    "typescript": "^3.6.4",
-    "ts-node": "^9.1.1"
+    "ts-node": "^9.1.1",
+    "typescript": "^3.6.4"
   },
   "scripts": {
     "test": "yarn lint:types && jest --no-cache",
@@ -38,6 +38,7 @@
     "boxen": "^5.0.0",
     "chalk": "^4.1.0",
     "clear": "^0.1.0",
+    "clui": "^0.3.6",
     "figlet": "^1.5.0"
   }
 }
