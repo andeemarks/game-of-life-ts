@@ -1,10 +1,9 @@
 import chalk from "chalk";
 import clear from "clear";
-import figlet from "figlet";
 import Sparkline from "clui";
 
 import boxen from "boxen";
-import Generation from "./generation";
+import { Generation } from "./generation";
 import Cell from "./cell";
 import { Observation } from "./cell-observer";
 
@@ -38,11 +37,6 @@ export default class Board {
 
   show(current: Generation): void {
     clear();
-    console.log(
-      chalk.yellow(
-        figlet.textSync("Game of Life", { horizontalLayout: "full" })
-      )
-    );
 
     console.log("Generation: " + current.id);
 

@@ -1,7 +1,7 @@
 import Cell from "../src/cell";
 import { RecordingObserver, Observation } from "./cell-observer";
 
-export default class Generation {
+export class Generation {
   private _cells: Cell[][];
   private _id: number;
   private _updates: Observation = new Observation([""], [""], [""]);
@@ -37,7 +37,7 @@ export default class Generation {
     next._updates = this.observer.record();
 
     if (this.equals(next)) {
-      throw new Error("Steady state found at generation " + this._id);
+      throw new EntropyError("Steady state found at generation " + this._id);
     }
 
     return next;
@@ -106,3 +106,5 @@ export default class Generation {
     });
   };
 }
+
+export class EntropyError extends Error {}

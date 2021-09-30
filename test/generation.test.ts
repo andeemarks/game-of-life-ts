@@ -1,4 +1,4 @@
-import Generation from "../src/generation";
+import { Generation } from "../src/generation";
 import Cell from "../src/cell";
 import { assert } from "console";
 

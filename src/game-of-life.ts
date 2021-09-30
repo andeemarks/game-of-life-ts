@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import Generation from "./generation";
+import { Generation, EntropyError } from "./generation";
 import Board from "./board";
 
 function delay(ms: number): Promise<void> {
@@ -29,9 +29,9 @@ async function gameLoop(): Promise<void> {
     try {
       current = current.regenerate();
       board.show(current);
-      await delay(500);
-    } catch (e) {
-      isEvolving = false;
+      await delay(250);
+    } catch (error) {
+      if (error instanceof EntropyError) isEvolving = false;
     }
   }
 }
