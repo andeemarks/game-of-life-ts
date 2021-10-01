@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { Generation, EntropyError } from "./generation";
 import Board from "./board";
+import commandLineArgs from "command-line-args";
 
 function seed(gen: Generation): Generation {
   gen.seed(4, 5);
@@ -13,7 +14,16 @@ function seed(gen: Generation): Generation {
 }
 
 async function gameLoop(): Promise<void> {
-  let current: Generation = new Generation(20, 20);
+  const optionDefinitions = [
+    { name: "verbose", alias: "v", type: Boolean },
+    { name: "width", type: Number, multiple: false, defaultValue: 20 },
+    { name: "height", type: Number, multiple: false, defaultValue: 20 },
+    { name: "delay", type: Number, defaultValue: 250 },
+  ];
+
+  const options = commandLineArgs(optionDefinitions);
+
+  let current: Generation = new Generation(options.width, options.height);
   current = seed(current);
 
   const board: Board = new Board();
@@ -24,7 +34,7 @@ async function gameLoop(): Promise<void> {
     try {
       current = current.regenerate();
       board.show(current);
-      await delay(250);
+      await delay(options.delay);
     } catch (error) {
       if (error instanceof EntropyError) isEvolving = false;
     }
