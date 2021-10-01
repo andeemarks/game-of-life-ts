@@ -3,12 +3,18 @@ import { Generation, EntropyError } from "./generation";
 import Board from "./board";
 import CommandLine from "./cli";
 
+const seedlings = [
+  [4, 5],
+  [5, 6],
+  [5, 7],
+  [4, 7],
+  [6, 7],
+];
+
 function seed(gen: Generation): Generation {
-  gen.seed(4, 5);
-  gen.seed(5, 6);
-  gen.seed(5, 7);
-  gen.seed(4, 7);
-  gen.seed(6, 7);
+  seedlings.forEach((seedling) => {
+    gen.seed(seedling[0], seedling[1]);
+  });
 
   return gen;
 }
