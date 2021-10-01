@@ -4,7 +4,7 @@
 # ➤ Conway's Game of Life
 
 <p align="center">
-  <img src="https://github.com/andeemarks/game-of-life-ts/blob/51dd804c57f6b7515f57f1fcb7a6003d802edc48/assets/screenshot.png" alt="Logo" width="150" height="auto" />
+  <img src="https://github.com/andeemarks/game-of-life-ts/blob/51dd804c57f6b7515f57f1fcb7a6003d802edc48/assets/screenshot.png" alt="Logo" width="300" height="auto" />
 </p>
 
 <h1 align="center">game-of-life</h1>
