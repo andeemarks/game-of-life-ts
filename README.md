@@ -3,14 +3,16 @@
 
 # ➤ Conway's Game of Life
 
-<!-- {{ template:logo }} -->
+<p align="center">
+  <img src="https://raw.githubusercontent.com/andeemarks/readme/master/assets/screenshot.png" alt="Logo" width="150" height="auto" />
+</p>
 
 <h1 align="center">game-of-life</h1>
 
 <!-- {{ template:badges }} -->
 
 <p align="center">
-  <b>Typescript version of Comway's Game of Life simulation.</b></br>
+  <b>Typescript version of Conway's Game of Life simulation.  Runs as a CLI application with no user interaction.  Keeps track of the number of new cells that have spawned, died, or thrived per generation.  Automatically stops when the environment reaches entropy (i.e., no further evolution).</b></br>
   <sub><sub>
 </p>
 

@@ -1,6 +1,6 @@
 # Conway's Game of Life
 
-<!-- {{ template:logo }} -->
+{{ template:logo }}
 
 {{ template:title }}
 

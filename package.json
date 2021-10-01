@@ -1,7 +1,7 @@
 {
   "name": "game-of-life",
   "version": "1.0.0",
-  "description": "Typescript version of Comway's Game of Life simulation.",
+  "description": "Typescript version of Conway's Game of Life simulation.  Runs as a CLI application with no user interaction.  Keeps track of the number of new cells that have spawned, died, or thrived per generation.  Automatically stops when the environment reaches entropy (i.e., no further evolution).",
   "author": "Andy Marks",
   "private": false,
   "main": "./lib/src/game-of-life.js",
