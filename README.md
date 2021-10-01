@@ -30,6 +30,7 @@
 
 * [➤ Conway's Game of Life](#-conways-game-of-life)
 	* [➤ Usage](#-usage)
+	* [➤ Configuration](#-configuration)
 	* [➤ Dependencies](#-dependencies)
 	* [➤ Contributors](#-contributors)
 	* [➤ License](#-license)
@@ -39,13 +40,23 @@
 
 ## ➤ Usage
 
+To run the simulation: `yarn game.js`.
+
 * **test**: yarn lint:types && jest --no-cache
 * **lint**: yarn lint:types && yarn lint:ci
 * **lint:types**: yarn tsc --noEmit -p .
 * **lint:ci**: eslint . --ext .tsx,.ts
 * **create**: yarn build
+* **readme**: npx @appnest/readme generate
 * **game**: yarn build && node lib/src/game-of-life.js
 * **build**: tsc -p .
+
+
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/fire.png)](#configuration)
+
+## ➤ Configuration
+
+None at the moment.
 
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/fire.png)](#dependencies)

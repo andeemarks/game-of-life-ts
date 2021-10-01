@@ -12,7 +12,13 @@
 
 ## Usage
 
+To run the simulation: `yarn game.js`.
+
 {{ pkg.scripts }}
+
+## Configuration
+
+None at the moment.
 
 ## Dependencies
 

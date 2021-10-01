@@ -38,6 +38,7 @@
     "lint:types": "yarn tsc --noEmit -p .",
     "lint:ci": "eslint . --ext .tsx,.ts",
     "create": "yarn build",
+    "readme": "npx @appnest/readme generate",
     "game": "yarn build && node lib/src/game-of-life.js",
     "build": "tsc -p ."
   },
