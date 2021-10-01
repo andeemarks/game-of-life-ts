@@ -4,7 +4,7 @@
 
 {{ template:title }}
 
-<!-- {{ template:badges }} -->
+{{ template:badges }}
 
 {{ template:description }}
 

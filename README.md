@@ -9,7 +9,11 @@
 
 <h1 align="center">game-of-life</h1>
 
-<!-- {{ template:badges }} -->
+<p align="center">
+		<a href="https://david-dm.org/andeemarks/game-of-life-ts"><img alt="Dependencies" src="https://img.shields.io/david/andeemarks/game-of-life-ts.svg" height="20"/></a>
+<a href="https://github.com/andeemarks/game-of-life-ts/graphs/contributors"><img alt="Contributors" src="https://img.shields.io/github/contributors/andeemarks/game-of-life-ts.svg" height="20"/></a>
+	</p>
+
 
 <p align="center">
   <b>Typescript version of Conway's Game of Life simulation.  Runs as a CLI application with no user interaction.  Keeps track of the number of new cells that have spawned, died, or thrived per generation.  Automatically stops when the environment reaches entropy (i.e., no further evolution).</b></br>
