@@ -1,6 +1,7 @@
 {
   "logo": {
-    "src": "https://github.com/andeemarks/game-of-life-ts/main/assets/screenshot.png",
+    "src": "https://github.com/andeemarks/game-of-life-ts/blob/51dd804c57f6b7515f57f1fcb7a6003d802edc48/assets/screenshot.png",
     "width": "150"
-  }
+  },
+  "line": "fire"
 }

@@ -1,10 +1,10 @@
 <!-- ⚠️ This README has been generated from the file(s) "blueprint.md" ⚠️-->
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#conways-game-of-life)
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/fire.png)](#conways-game-of-life)
 
 # ➤ Conway's Game of Life
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/andeemarks/readme/master/assets/screenshot.png" alt="Logo" width="150" height="auto" />
+  <img src="https://github.com/andeemarks/game-of-life-ts/main/assets/screenshot.png" alt="Logo" width="150" height="auto" />
 </p>
 
 <h1 align="center">game-of-life</h1>
@@ -20,7 +20,7 @@
 
 
 
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#table-of-contents)
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/fire.png)](#table-of-contents)
 
 ## ➤ Table of Contents
 
@@ -31,7 +31,7 @@
 	* [➤ License](#-license)
 
 
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#usage)
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/fire.png)](#usage)
 
 ## ➤ Usage
 
@@ -44,7 +44,7 @@
 * **build**: tsc -p .
 
 
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#dependencies)
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/fire.png)](#dependencies)
 
 ## ➤ Dependencies
 
@@ -57,7 +57,7 @@
 * **clui**: ^0.3.6
 
 
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#contributors)
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/fire.png)](#contributors)
 
 ## ➤ Contributors
 	
@@ -68,7 +68,7 @@
 
 
 
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#license)
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/fire.png)](#license)
 
 ## ➤ License
 	
