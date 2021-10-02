@@ -5,6 +5,45 @@ const DEFAULT_WIDTH = 20;
 const DEFAULT_HEIGHT = 20;
 const DEFAULT_DELAY = 250;
 
+const options = [
+  {
+    name: "spinner",
+    type: Boolean,
+    description: `Simple simulation of constant spinner evolution`,
+    group: "presets",
+  },
+  {
+    name: "glider",
+    type: Boolean,
+    description: `Simple simulation of moving glider shape`,
+    group: "presets",
+  },
+  {
+    name: "width",
+    typeLabel: "{underline number}",
+    type: Number,
+    description: `Width of simulation in characters.  Defaults to ${DEFAULT_WIDTH}.`,
+  },
+  {
+    name: "height",
+    typeLabel: "{underline number}",
+    type: Number,
+    description: `Height of simulation in characters.  Defaults to ${DEFAULT_HEIGHT}.`,
+  },
+  {
+    name: "delay",
+    typeLabel: "{underline ms}",
+    type: Number,
+    description: `Time in millis between evolutions.  Defaults to ${DEFAULT_DELAY}.`,
+  },
+  {
+    name: "help",
+    alias: "h",
+    type: Boolean,
+    description: "Print this usage guide.",
+  },
+];
+
 const optionDefinitions = [
   { name: "help", alias: "h", type: Boolean },
   { name: "spinner", type: Boolean },
@@ -25,43 +64,14 @@ const sections = [
     content: "Terminal version of {bold Conway's Game of Life} simulation.",
   },
   {
+    header: "Presets",
+    optionList: options,
+    group: ["presets"],
+  },
+  {
     header: "Options",
-    optionList: [
-      {
-        name: "spinner",
-        type: Boolean,
-        description: `Simple simulation of constant spinner evolution`,
-      },
-      {
-        name: "glider",
-        type: Boolean,
-        description: `Simple simulation of moving glider shape`,
-      },
-      {
-        name: "width",
-        typeLabel: "{underline number}",
-        type: Number,
-        description: `Width of simulation in characters.  Defaults to ${DEFAULT_WIDTH}.`,
-      },
-      {
-        name: "height",
-        typeLabel: "{underline number}",
-        type: Number,
-        description: `Height of simulation in characters.  Defaults to ${DEFAULT_HEIGHT}.`,
-      },
-      {
-        name: "delay",
-        typeLabel: "{underline ms}",
-        type: Number,
-        description: `Time in millis between evolutions.  Defaults to ${DEFAULT_DELAY}.`,
-      },
-      {
-        name: "help",
-        alias: "h",
-        type: Boolean,
-        description: "Print this usage guide.",
-      },
-    ],
+    optionList: options,
+    group: ["_none"],
   },
   {
     header: "Examples",
