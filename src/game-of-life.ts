@@ -5,6 +5,13 @@ import CommandLine from "./cli";
 import Presets from "./presets";
 import { exit } from "process";
 
+type Config = {
+  width: number;
+  height: number;
+  delay: number;
+  seedlings: number[][];
+};
+
 function seed(gen: Generation, seedlings: number[][]): Generation {
   seedlings.forEach((seedling) => {
     gen.seed(seedling[0], seedling[1]);
@@ -13,12 +20,7 @@ function seed(gen: Generation, seedlings: number[][]): Generation {
   return gen;
 }
 
-function setup(): {
-  width: number;
-  height: number;
-  delay: number;
-  seedlings: number[][];
-} {
+function setup(): Config {
   const cli = new CommandLine();
   const options = cli.options;
 
@@ -43,12 +45,7 @@ function setup(): {
   }
 }
 
-async function gameLoop(options: {
-  width: number;
-  height: number;
-  delay: number;
-  seedlings: number[][];
-}): Promise<void> {
+async function gameLoop(options: Config): Promise<void> {
   let current: Generation = new Generation(options.height, options.width);
   current = seed(current, options.seedlings);
 
@@ -71,7 +68,7 @@ function delay(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-const options = setup();
+const options: Config = setup();
 gameLoop(options);
 
 export {};
