@@ -11,7 +11,7 @@ const seedlings = [
   [6, 7],
 ];
 
-const spinner = {
+const blinker = {
   width: 5,
   height: 5,
   delay: 250,
@@ -19,6 +19,18 @@ const spinner = {
     [1, 2],
     [2, 2],
     [3, 2],
+  ],
+};
+
+const block = {
+  width: 4,
+  height: 4,
+  delay: 250,
+  seedlings: [
+    [1, 1],
+    [1, 2],
+    [2, 1],
+    [2, 2],
   ],
 };
 
@@ -52,19 +64,18 @@ async function gameLoop(): Promise<void> {
     return;
   }
 
-  var current: Generation = new Generation(options.height, options.width);
-  if (options.spinner) {
-    options = spinner;
-    current = new Generation(options.height, options.width);
-    current = seed(current, spinner.seedlings);
+  if (options.blinker) {
+    options = blinker;
   } else if (options.glider) {
     options = glider;
-    current = new Generation(options.height, options.width);
-    current = seed(current, glider.seedlings);
+  } else if (options.block) {
+    options = block;
   } else {
-    current = new Generation(options.height, options.width);
-    current = seed(current, seedlings);
+    options.seedlings = seedlings;
   }
+
+  let current: Generation = new Generation(options.height, options.width);
+  current = seed(current, options.seedlings);
 
   const board: Board = new Board();
   board.show(current);

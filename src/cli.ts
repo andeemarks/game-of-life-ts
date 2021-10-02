@@ -7,15 +7,21 @@ const DEFAULT_DELAY = 250;
 
 const options = [
   {
-    name: "spinner",
+    name: "blinker",
     type: Boolean,
-    description: `Simple simulation of constant spinner evolution`,
+    description: `Simple simulation of constant blinker evolution`,
     group: "presets",
   },
   {
     name: "glider",
     type: Boolean,
     description: `Simple simulation of moving glider shape`,
+    group: "presets",
+  },
+  {
+    name: "block",
+    type: Boolean,
+    description: `4 cell still life`,
     group: "presets",
   },
   {
@@ -46,8 +52,9 @@ const options = [
 
 const optionDefinitions = [
   { name: "help", alias: "h", type: Boolean },
-  { name: "spinner", type: Boolean },
+  { name: "blinker", type: Boolean },
   { name: "glider", type: Boolean },
+  { name: "block", type: Boolean },
   { name: "width", type: Number, multiple: false, defaultValue: DEFAULT_WIDTH },
   {
     name: "height",
