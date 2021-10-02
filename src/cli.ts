@@ -7,6 +7,8 @@ const DEFAULT_DELAY = 250;
 
 const optionDefinitions = [
   { name: "help", alias: "h", type: Boolean },
+  { name: "spinner", type: Boolean },
+  { name: "glider", type: Boolean },
   { name: "width", type: Number, multiple: false, defaultValue: DEFAULT_WIDTH },
   {
     name: "height",
@@ -25,6 +27,16 @@ const sections = [
   {
     header: "Options",
     optionList: [
+      {
+        name: "spinner",
+        type: Boolean,
+        description: `Simple simulation of constant spinner evolution`,
+      },
+      {
+        name: "glider",
+        type: Boolean,
+        description: `Simple simulation of moving glider shape`,
+      },
       {
         name: "width",
         typeLabel: "{underline number}",

@@ -11,7 +11,31 @@ const seedlings = [
   [6, 7],
 ];
 
-function seed(gen: Generation): Generation {
+const spinner = {
+  width: 5,
+  height: 5,
+  delay: 250,
+  seedlings: [
+    [1, 2],
+    [2, 2],
+    [3, 2],
+  ],
+};
+
+const glider = {
+  width: 20,
+  height: 20,
+  delay: 250,
+  seedlings: [
+    [2, 1],
+    [3, 2],
+    [1, 3],
+    [2, 3],
+    [3, 3],
+  ],
+};
+
+function seed(gen: Generation, seedlings: number[][]): Generation {
   seedlings.forEach((seedling) => {
     gen.seed(seedling[0], seedling[1]);
   });
@@ -25,22 +49,34 @@ async function gameLoop(): Promise<void> {
 
   if (options.help) {
     cli.usage();
+    return;
+  }
+
+  var current: Generation = new Generation(options.height, options.width);
+  if (options.spinner) {
+    options = spinner;
+    current = new Generation(options.height, options.width);
+    current = seed(current, spinner.seedlings);
+  } else if (options.glider) {
+    options = glider;
+    current = new Generation(options.height, options.width);
+    current = seed(current, glider.seedlings);
   } else {
-    let current: Generation = new Generation(options.height, options.width);
-    current = seed(current);
+    current = new Generation(options.height, options.width);
+    current = seed(current, seedlings);
+  }
 
-    const board: Board = new Board();
-    board.show(current);
+  const board: Board = new Board();
+  board.show(current);
 
-    let isEvolving = true;
-    while (isEvolving) {
-      try {
-        current = current.regenerate();
-        board.show(current);
-        await delay(options.delay);
-      } catch (error) {
-        if (error instanceof EntropyError) isEvolving = false;
-      }
+  let isEvolving = true;
+  while (isEvolving) {
+    try {
+      current = current.regenerate();
+      board.show(current);
+      await delay(options.delay);
+    } catch (error) {
+      if (error instanceof EntropyError) isEvolving = false;
     }
   }
 }
