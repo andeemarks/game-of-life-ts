@@ -46,7 +46,13 @@ export class RecordingObserver implements CellObserver {
 }
 
 export class NullObserver implements CellObserver {
-  cellSpawning = (): void => {};
-  cellDying = (): void => {};
-  cellThriving = (): void => {};
+  cellSpawning = (): void => {
+    // noop
+  };
+  cellDying = (): void => {
+    // noop
+  };
+  cellThriving = (): void => {
+    // noop
+  };
 }

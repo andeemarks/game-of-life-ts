@@ -13,9 +13,14 @@ function seed(gen: Generation, seedlings: number[][]): Generation {
   return gen;
 }
 
-function setup(): any {
+function setup(): {
+  width: number;
+  height: number;
+  delay: number;
+  seedlings: number[][];
+} {
   const cli = new CommandLine();
-  let options = cli.options;
+  const options = cli.options;
 
   if (options.help) {
     cli.usage();
@@ -23,19 +28,27 @@ function setup(): any {
   }
 
   if (options.blinker) {
-    options = Presets.blinker;
+    return Presets.blinker;
   } else if (options.glider) {
-    options = Presets.glider;
+    return Presets.glider;
   } else if (options.block) {
-    options = Presets.block;
+    return Presets.block;
   } else {
-    options.seedlings = Presets.seedlings;
+    return {
+      width: options.width,
+      height: options.height,
+      delay: options.delay,
+      seedlings: Presets.seedlings,
+    };
   }
-
-  return options;
 }
 
-async function gameLoop(options: any): Promise<void> {
+async function gameLoop(options: {
+  width: number;
+  height: number;
+  delay: number;
+  seedlings: number[][];
+}): Promise<void> {
   let current: Generation = new Generation(options.height, options.width);
   current = seed(current, options.seedlings);
 
