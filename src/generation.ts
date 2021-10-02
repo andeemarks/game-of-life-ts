@@ -1,6 +1,8 @@
 import Cell from "../src/cell";
 import { RecordingObserver, Observation } from "./cell-observer";
 
+export class EntropyError extends Error {}
+
 export class Generation {
   private _cells: Cell[][];
   private _id: number;
@@ -106,5 +108,3 @@ export class Generation {
     });
   };
 }
-
-export class EntropyError extends Error {}

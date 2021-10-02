@@ -36,7 +36,7 @@
     "test": "yarn lint:types && jest --no-cache",
     "lint": "yarn lint:types && yarn lint:ci",
     "lint:types": "yarn tsc --noEmit -p .",
-    "lint:ci": "eslint . --ext .tsx,.ts",
+    "lint:ci": "eslint src/* --ext .tsx,.ts",
     "create": "yarn build",
     "readme": "npx @appnest/readme generate",
     "game": "yarn build && node lib/src/game-of-life.js",

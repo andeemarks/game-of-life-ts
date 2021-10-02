@@ -105,11 +105,11 @@ export default class CommandLine {
     this._options = commandLineArgs(optionDefinitions);
   }
 
-  get options() {
+  get options(): commandLineArgs.CommandLineOptions {
     return this._options;
   }
 
-  usage = () => {
+  usage = (): void => {
     console.log(commandLineUsage(sections));
   };
 }

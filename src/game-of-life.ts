@@ -14,7 +14,7 @@ function seed(gen: Generation, seedlings: number[][]): Generation {
 }
 
 function setup(): any {
-  let cli = new CommandLine();
+  const cli = new CommandLine();
   let options = cli.options;
 
   if (options.help) {
@@ -58,7 +58,7 @@ function delay(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-let options = setup();
+const options = setup();
 gameLoop(options);
 
 export {};

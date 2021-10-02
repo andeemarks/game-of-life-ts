@@ -40,7 +40,7 @@ export default class Board {
 
     console.log("Generation: " + current.id);
 
-    let rows = [];
+    const rows = [];
     for (let x = 0; x < current.width; x++) {
       let row = "";
       for (let y = 0; y < current.height; y++) {
