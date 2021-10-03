@@ -12,63 +12,68 @@ type Config = {
   seedlings: number[][];
 };
 
-function seed(gen: Generation, seedlings: number[][]): Generation {
-  seedlings.forEach((seedling) => {
-    gen.seed(seedling[0], seedling[1]);
-  });
+class GameOfLife {
+  private options: Config = this.setup();
 
-  return gen;
-}
-
-function setup(): Config {
-  const cli = new CommandLine();
-  const options = cli.options;
-
-  if (options.help) {
-    cli.usage();
-    exit(0);
+  constructor() {
+    this.gameLoop(this.options);
   }
 
-  if (options.blinker) {
-    return Presets.blinker;
-  } else if (options.glider) {
-    return Presets.glider;
-  } else if (options.block) {
-    return Presets.block;
-  } else {
-    return {
-      width: options.width,
-      height: options.height,
-      delay: options.delay,
-      seedlings: Presets.seedlings,
-    };
+  seed(gen: Generation, seedlings: number[][]): Generation {
+    seedlings.forEach((seedling) => {
+      gen.seed(seedling[0], seedling[1]);
+    });
+
+    return gen;
   }
-}
 
-async function gameLoop(options: Config): Promise<void> {
-  let current: Generation = new Generation(options.height, options.width);
-  current = seed(current, options.seedlings);
+  setup(): Config {
+    const cli = new CommandLine();
+    const options = cli.options;
 
-  const board: Board = new Board();
-  board.show(current);
+    if (options.help) {
+      cli.usage();
+      exit(0);
+    }
 
-  let isEvolving = true;
-  while (isEvolving) {
-    try {
-      current = current.regenerate();
-      board.show(current);
-      await delay(options.delay);
-    } catch (error) {
-      if (error instanceof EntropyError) isEvolving = false;
+    if (options.blinker) {
+      return Presets.blinker;
+    } else if (options.glider) {
+      return Presets.glider;
+    } else if (options.block) {
+      return Presets.block;
+    } else {
+      return {
+        width: options.width,
+        height: options.height,
+        delay: options.delay,
+        seedlings: Presets.seedlings,
+      };
     }
   }
+
+  async gameLoop(options: Config): Promise<void> {
+    let current: Generation = new Generation(options.height, options.width);
+    current = this.seed(current, options.seedlings);
+
+    const board: Board = new Board();
+    board.show(current);
+
+    let isEvolving = true;
+    while (isEvolving) {
+      try {
+        current = current.regenerate();
+        board.show(current);
+        await this.delay(options.delay);
+      } catch (error) {
+        if (error instanceof EntropyError) isEvolving = false;
+      }
+    }
+  }
+
+  delay(ms: number): Promise<void> {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
 }
 
-function delay(ms: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-const options: Config = setup();
-gameLoop(options);
-
-export {};
+new GameOfLife();
