@@ -45,7 +45,7 @@ To run the simulation: `yarn game.js`.
 * **test**: yarn lint:types && jest --no-cache
 * **lint**: yarn lint:types && yarn lint:ci
 * **lint:types**: yarn tsc --noEmit -p .
-* **lint:ci**: eslint . --ext .tsx,.ts
+* **lint:ci**: eslint src/* --ext .tsx,.ts
 * **create**: yarn build
 * **readme**: npx @appnest/readme generate
 * **game**: yarn build && node lib/src/game-of-life.js
@@ -56,7 +56,7 @@ To run the simulation: `yarn game.js`.
 
 ## ➤ Configuration
 
-None at the moment.
+To see available configuration: `yarn --help`.
 
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/fire.png)](#dependencies)
@@ -65,11 +65,15 @@ None at the moment.
 
 * **@types/clear**: ^0.1.2
 * **@types/clui**: ^0.3.1
+* **@types/command-line-args**: ^5.2.0
+* **@types/command-line-usage**: ^5.0.2
 * **@types/figlet**: ^1.5.4
 * **box-console**: ^2.0.0
 * **chalk**: ^4.1.0
 * **clear**: ^0.1.0
 * **clui**: ^0.3.6
+* **command-line-args**: ^5.2.0
+* **command-line-usage**: ^6.1.1
 
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/fire.png)](#contributors)

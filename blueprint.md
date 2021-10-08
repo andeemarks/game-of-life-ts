@@ -18,7 +18,7 @@ To run the simulation: `yarn game.js`.
 
 ## Configuration
 
-None at the moment.
+To see available configuration: `yarn --help`.
 
 ## Dependencies
 
